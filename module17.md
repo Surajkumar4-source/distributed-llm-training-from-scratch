@@ -2757,44 +2757,44 @@ Fill in your measured values.
 
 table = """
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║           CAPSTONE BENCHMARK RESULTS — FILL IN YOUR NUMBERS                 ║
+║           CAPSTONE BENCHMARK RESULTS — FILL IN YOUR NUMBERS                  ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
 ║                                                                              ║
-║  Hardware: 2 nodes × 8 A100 SXM4 40GB (NVSwitch intra-node, IB inter-node) ║
-║  Model: GPT (d=384, L=6, ~10M params)  Dtype: bf16                          ║
+║  Hardware: 2 nodes × 8 A100 SXM4 40GB (NVSwitch intra-node, IB inter-node)   ║
+║  Model: GPT (d=384, L=6, ~10M params)  Dtype: bf16                           ║
 ║                                                                              ║
-╠══════════════════════╦════════╦════════╦═══════╦══════════╦═════════════════╣
-║ Config               ║ GPUs   ║ tok/s  ║ MFU%  ║ peak_GB  ║  efficiency     ║
-╠══════════════════════╬════════╬════════╬═══════╬══════════╬═════════════════╣
-║ Baseline (1 GPU DDP) ║ 1      ║ ___    ║ ___   ║ ___      ║ 100% (baseline) ║
-║ 2 GPU DDP            ║ 2      ║ ___    ║ ___   ║ ___      ║ ___%            ║
-║ 4 GPU DDP            ║ 4      ║ ___    ║ ___   ║ ___      ║ ___%            ║
-║ 8 GPU DDP            ║ 8      ║ ___    ║ ___   ║ ___      ║ ___%            ║
-║ 8 GPU FSDP Z-3       ║ 8      ║ ___    ║ ___   ║ ___      ║ ___%            ║
-║ 16 GPU DDP           ║ 16     ║ ___    ║ ___   ║ ___      ║ ___%            ║
-╠══════════════════════╩════════╩════════╩═══════╩══════════╩═════════════════╣
+╠══════════════════════╦════════╦════════╦═══════╦══════════╦══════=═══════════╣
+║ Config               ║ GPUs   ║ tok/s  ║ MFU%  ║ peak_GB  ║  efficiency      ║
+╠══════════════════════╬════════╬════════╬═══════╬══════════╬══════════════=═══╣
+║ Baseline (1 GPU DDP) ║ 1      ║ ___    ║ ___   ║ ___      ║ 100% (baseline)  ║
+║ 2 GPU DDP            ║ 2      ║ ___    ║ ___   ║ ___      ║ ___%             ║
+║ 4 GPU DDP            ║ 4      ║ ___    ║ ___   ║ ___      ║ ___%             ║
+║ 8 GPU DDP            ║ 8      ║ ___    ║ ___   ║ ___      ║ ___%             ║
+║ 8 GPU FSDP Z-3       ║ 8      ║ ___    ║ ___   ║ ___      ║ ___%             ║
+║ 16 GPU DDP           ║ 16     ║ ___    ║ ___   ║ ___      ║ ___%             ║
+╠══════════════════════╩════════╩════════╩═══════╩══════════╩═════════════════=╣
 ║                                                                              ║
-║  Memory Optimization Results (8 GPU, same model):                           ║
+║  Memory Optimization Results (8 GPU, same model):                            ║
 ║                                                                              ║
-╠══════════════════════╦══════════╦══════════════════════════════════════════╣
-║ Config               ║ peak_GB  ║ Notes                                    ║
-╠══════════════════════╬══════════╬══════════════════════════════════════════╣
-║ DDP, no tricks       ║ ___      ║ baseline                                 ║
-║ DDP + bf16 AMP       ║ ___      ║                                          ║
-║ DDP + act_ckpt       ║ ___      ║                                          ║
-║ FSDP FULL_SHARD      ║ ___      ║ params sharded across 8 GPUs            ║
-╠══════════════════════╩══════════╩══════════════════════════════════════════╣
+╠══════════════════════╦══════════╦══════════════════════════════════════════==╣
+║ Config               ║ peak_GB  ║ Notes                                      ║
+╠══════════════════════╬══════════╬══════════════════════════════════════════==╣
+║ DDP, no tricks       ║ ___      ║ baseline                                   ║
+║ DDP + bf16 AMP       ║ ___      ║                                            ║
+║ DDP + act_ckpt       ║ ___      ║                                            ║
+║ FSDP FULL_SHARD      ║ ___      ║ params sharded across 8 GPUs               ║
+╠══════════════════════╩══════════╩══════════════════════════════════════════==╣
 ║                                                                              ║
-║  Communication Analysis (8 GPU DDP):                                        ║
+║  Communication Analysis (8 GPU DDP):                                         ║
 ║    AllReduce bucket size: 25MB                                               ║
-║    Comm overhead per step: ___ ms  (___ % of total step time)               ║
-║    NVLink bandwidth (measured): ___ GB/s                                    ║
+║    Comm overhead per step: ___ ms  (___ % of total step time)                ║
+║    NVLink bandwidth (measured): ___ GB/s                                     ║
 ║                                                                              ║
 ║  Profiler Findings:                                                          ║
-║    Top-1 op by CUDA time: ___________  (___ ms)                             ║
-║    Top-2 op by CUDA time: ___________  (___ ms)                             ║
-║    GPU idle time: ___ %                                                     ║
-║    DataLoader bottleneck: yes / no                                          ║
+║    Top-1 op by CUDA time: ___________  (___ ms)                              ║
+║    Top-2 op by CUDA time: ___________  (___ ms)                              ║
+║    GPU idle time: ___ %                                                      ║
+║    DataLoader bottleneck: yes / no                                           ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 """
